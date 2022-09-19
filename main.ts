@@ -28,7 +28,6 @@ sprites.onOverlap(SpriteKind.PowerBall, SpriteKind.nobb_U, function (sprite, oth
 })
 sprites.onOverlap(SpriteKind.PowerBall, SpriteKind.nobb_R, function (sprite, otherSprite) {
     if (controller.left.isPressed()) {
-        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite).destroy()
         sprite.destroy()
         fnflikestatusbar.value += 1
     }
@@ -165,14 +164,12 @@ function music2 () {
 sprites.onOverlap(SpriteKind.PowerBall, SpriteKind.nobb_D, function (sprite, otherSprite) {
     if (controller.down.isPressed()) {
         sprite.destroy()
-        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite).destroy()
         fnflikestatusbar.value += 1
     }
 })
 sprites.onOverlap(SpriteKind.PowerBall, SpriteKind.nobb_B, function (sprite, otherSprite) {
     if (controller.B.isPressed()) {
         sprite.destroy()
-        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite).destroy()
         fnflikestatusbar.value += 1
     }
 })
@@ -1588,6 +1585,8 @@ function Battle () {
     fnflikestatusbar.positionDirection(CollisionDirection.Right)
     fnflikestatusbar.setColor(11, 5)
 }
+let mySprite9: Sprite = null
+let Nobb_chooser = 0
 let Darkness: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
@@ -1934,5 +1933,96 @@ forever(function () {
     }
 })
 game.onUpdateInterval(500, function () {
-	
+    if (Battle_Start == 1) {
+        Nobb_chooser = randint(1, 3)
+        if (Nobb_chooser == 1) {
+            mySprite9 = sprites.create(img`
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                `, SpriteKind.PowerBall)
+            mySprite9.setPosition(81, 61)
+            mySprite9.setVelocity(40, 40)
+        } else if (Nobb_chooser == 2) {
+            mySprite9 = sprites.create(img`
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                `, SpriteKind.PowerBall)
+            mySprite9.setPosition(81, 61)
+            mySprite9.setVelocity(-40, 40)
+        } else if (Nobb_chooser == 3) {
+            mySprite9 = sprites.create(img`
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                `, SpriteKind.PowerBall)
+            mySprite9.setPosition(81, 61)
+            mySprite9.setVelocity(0, 40)
+        } else {
+            mySprite9 = sprites.create(img`
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                2 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 
+                . 2 4 4 4 4 4 4 4 4 4 4 4 4 4 2 . 
+                . . 2 4 4 4 4 4 4 4 4 4 4 4 2 . . 
+                . . . 2 4 4 4 4 4 4 4 4 4 2 . . . 
+                . . . . 2 2 2 2 2 2 2 2 2 . . . . 
+                `, SpriteKind.PowerBall)
+            mySprite9.setPosition(81, 61)
+            mySprite9.setVelocity(40, 40)
+        }
+    }
 })
